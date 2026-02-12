@@ -18,8 +18,8 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-5xl lg:text-7xl font-bold text-[#124029] leading-[1.1] mb-6 tracking-tight font-space"
             >
-              Create success stories with <br className="hidden lg:block" />
-              <span className="text-emerald-700">personalized tutoring</span>
+              Learning that feels like <br className="hidden lg:block" />
+              <span className="text-emerald-700">MAGIC</span>
             </motion.h1>
 
             <motion.p
@@ -28,7 +28,8 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="text-xl text-gray-600 mb-10 leading-relaxed max-w-lg"
             >
-              Get better grades faster—with expert teachers, helpful AI, and convenient ways to learn from home.
+              One child. One expert. 100% focus. Personalized 1-on-1 Online tuition that builds clarity,
+              confidence, and results parents can trust.
             </motion.p>
 
             <motion.div
@@ -38,7 +39,7 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row gap-4 mb-12"
             >
               <Button variant="primary" className="!bg-[#124029] !border-[#124029] hover:!bg-[#1a5c3a] !px-10 !py-4 !text-lg !rounded-lg shadow-[#124029]/30 shadow-xl cursor-pointer">
-                Get Started
+                Start your journey
                 <ArrowRight size={20} className="ml-2" />
               </Button>
             </motion.div>

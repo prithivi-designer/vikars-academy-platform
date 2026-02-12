@@ -12,10 +12,12 @@ import LearningPacks from './components/LearningPacks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import BlogSection from './components/BlogSection';
+import YouTubeSection from './components/YouTubeSection';
 
 const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen w-full bg-white overflow-x-hidden selection:bg-[#124029] selection:text-white">
+    <div className="relative min-h-screen w-full bg-white selection:bg-[#124029] selection:text-white">
 
       {/* Global Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -48,9 +50,7 @@ const App: React.FC = () => {
           <DemoBooking />
         </ScrollSection>
 
-        <ScrollSection>
-          <Programs />
-        </ScrollSection>
+        <Programs />
 
         <ScrollSection>
           <Journey />
@@ -66,6 +66,14 @@ const App: React.FC = () => {
 
         <ScrollSection>
           <LearningPacks />
+        </ScrollSection>
+
+        <ScrollSection>
+          <BlogSection />
+        </ScrollSection>
+
+        <ScrollSection>
+          <YouTubeSection />
         </ScrollSection>
 
         <ScrollSection>

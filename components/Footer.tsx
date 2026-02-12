@@ -1,26 +1,18 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, ArrowRight } from 'lucide-react';
 import Button from './Button';
+import StackFeatureSection from '@/components/ui/stack-feature-section';
 
 import fullLogo from '../src/vikars_full_logo.png';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-white border-t border-gray-200 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full">
+        <StackFeatureSection />
+      </div>
 
-        {/* Call to Action Box in Footer */}
-        <div className="bg-[#124029] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mb-16 relative overflow-hidden shadow-2xl shadow-[#124029]/20">
-          <div className="relative z-10 text-center md:text-left">
-            <h2 className="text-3xl font-bold text-white mb-2">Book Your Free Online Demo Class</h2>
-            <p className="text-emerald-100">See the Difference in Just 30 Minutes. Get a free learning report!</p>
-          </div>
-          <div className="relative z-10 flex-shrink-0">
-            <Button variant="secondary" className="!text-[#124029] !px-10 !py-4 hover:!bg-gray-100">
-              Book Free Demo
-            </Button>
-          </div>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 

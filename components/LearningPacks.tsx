@@ -72,14 +72,10 @@ const LearningPacks: React.FC = () => {
 
               {/* Content */}
               <div>
-                <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">{pack.title}</h3>
-                <div className="text-3xl font-bold text-[#124029] mb-8 font-space">
-                  {pack.price}
-                </div>
+                <h3 className="text-2xl font-bold text-[#124029] mb-8 font-space">{pack.title}</h3>
 
-                <button className={`w-full bg-[#124029] py-4 rounded-full font-bold text-white shadow-lg flex items-center justify-center gap-2 group transition-all duration-300 ring-2 ring-transparent ${pack.buttonHover}`}>
-                  Start Trial
-                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                <button disabled className={`w-full bg-[#124029]/80 py-4 rounded-full font-bold text-white shadow-lg flex items-center justify-center gap-2 group transition-all duration-300 opacity-75 cursor-not-allowed hover:bg-[#124029]/80`}>
+                  Coming Soon
                 </button>
               </div>
             </div>

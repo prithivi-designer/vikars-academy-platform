@@ -55,8 +55,8 @@ const Features: React.FC = () => {
                className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6"
             >
 
-               {/* 1. Personalised One-on-One (Tall, Left) */}
-               <motion.div variants={item} className="md:col-span-1 md:row-span-2 bg-[#F3F8F5] rounded-[32px] p-8 flex flex-col relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               {/* 1. Personalised One-on-One (Shortened, Left) */}
+               <motion.div variants={item} className="md:col-span-1 bg-[#F3F8F5] rounded-[32px] p-8 flex flex-col relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Personalised Classes</h3>
                   <p className="text-[#124029]/70 text-sm mb-8 leading-relaxed font-medium">
                      One student. One expert. No group noise, no distractions—just dedicated attention.
@@ -137,35 +137,71 @@ const Features: React.FC = () => {
                   </div>
                </motion.div>
 
-               {/* 3. Expert Teachers (Square, Mid) */}
-               <motion.div variants={item} className="md:col-span-1 bg-[#F3F8F5] rounded-[32px] p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
-                  <div>
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Expert Teachers</h3>
+               {/* 3. Expert Teachers (Wide, Mid Left) */}
+               <motion.div variants={item} className="md:col-span-2 bg-[#F3F8F5] rounded-[32px] p-6 md:p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+                  <div className="flex-1 w-full md:w-auto">
+                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">1:3 Expert Group
+                     </h3>
                      <p className="text-[#124029]/70 text-sm mb-6 font-medium">
-                        Handpicked, verified, and trained to simplify tough topics.
+                        Small group mentorship. Personalized attention, collaborative learning.
                      </p>
                   </div>
 
-                  {/* UI Mockup: ID Card */}
-                  <div className="bg-white rounded-2xl p-4 shadow-sm w-full border border-gray-100 transform transition-transform group-hover:-translate-y-2">
-                     <div className="flex items-center gap-3 mb-3 border-b border-gray-100 pb-3">
-                        <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden ring-2 ring-[#124029]/10">
-                           <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" className="w-full h-full object-cover" alt="Tutor" />
+                  {/* UI Mockup: Active Classroom Interface */}
+                  <div className="w-full md:flex-1 bg-white rounded-2xl p-3 shadow-md border border-gray-100 transform transition-transform group-hover:-translate-y-2 relative overflow-hidden">
+                     {/* Browser Header Bar */}
+                     <div className="flex items-center gap-1.5 mb-3 px-1">
+                        <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                        <div className="ml-auto text-[10px] text-gray-400 font-medium flex items-center gap-1">
+                           <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                           Live Class
                         </div>
-                        <div>
-                           <div className="text-xs font-bold text-gray-800">Sarah Jenkins</div>
-                           <div className="text-[10px] text-gray-500">M.Sc Physics • 8 Yrs Exp</div>
-                        </div>
-                        <ShieldCheck size={16} className="text-[#124029] ml-auto fill-[#124029]/10" />
                      </div>
-                     <div className="flex gap-2">
-                        <span className="bg-[#124029]/10 text-[#124029] text-[10px] px-2 py-1 rounded-full font-bold">Verified</span>
-                        <span className="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded-full font-bold">Top Rated</span>
+
+                     {/* Video Grid */}
+                     <div className="space-y-2">
+                        {/* Teacher View (Large) */}
+                        <div className="relative rounded-xl overflow-hidden aspect-[16/9] group/video">
+                           <img
+                              src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=300&auto=format&fit=crop"
+                              className="w-full h-full object-cover"
+                              alt="Expert Mentor"
+                           />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+
+                           {/* Teacher Label */}
+                           <div className="absolute bottom-2 left-2 right-2 flex justify-between items-center">
+                              <span className="text-white text-[10px] font-bold bg-black/30 backdrop-blur-md px-2 py-1 rounded-full">
+                                 Sarah • Expert Mentor
+                              </span>
+                              <div className="w-5 h-5 bg-[#124029] rounded-full flex items-center justify-center">
+                                 <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Students Grid (3 Students) */}
+                        <div className="grid grid-cols-3 gap-2">
+                           {[
+                              "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop",
+                              "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&auto=format&fit=crop",
+                              "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=150&auto=format&fit=crop"
+                           ].map((src, i) => (
+                              <div key={i} className="relative rounded-lg overflow-hidden aspect-square bg-gray-100 border border-gray-100">
+                                 <img src={src} className="w-full h-full object-cover grayscale-[10%]" alt="Student" />
+                                 <div className="absolute top-1 right-1 w-2 h-2 bg-green-500 border border-white rounded-full"></div>
+                              </div>
+                           ))}
+                        </div>
                      </div>
                   </div>
                </motion.div>
 
-               {/* 4. Progress Tracker (Square, Mid) */}
+               {/* 4. Progress Tracker (Square, Mid Right) */}
                <motion.div variants={item} className="md:col-span-1 bg-[#E7F3EF] rounded-[32px] p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div>
                      <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Progress Tracker</h3>

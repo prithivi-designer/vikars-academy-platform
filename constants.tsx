@@ -4,53 +4,103 @@ import { Users, BookOpen, Trophy, Activity, Map, Cpu, CheckCircle } from 'lucide
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Priya Sharma",
-    country: "India",
+    name: "Mrs. Lakshmi R.",
+    country: "Chennai, India",
     flag: "🇮🇳",
-    role: "Parent (Class 10 CBSE)",
-    content: "The GPS Learning Path™ helped us understand exactly where my son was struggling. His Science score jumped by 30% in just 3 months.",
+    role: "Parent (Class 10)",
+    content: "My son being in 10th grade used to memorize everything without understanding concepts, especially in Maths and Science. After joining VIKAR'S ACADEMY, the teaching approach completely changed his mindset. They focus on clarity first, marks next. Now he solves problems confidently without fear.",
     rating: 5,
     image: "https://picsum.photos/100/100?random=1"
   },
   {
     id: 2,
-    name: "Arun Patel",
-    country: "India",
+    name: "Mrs. Divya N.",
+    country: "Bangalore, India",
     flag: "🇮🇳",
-    role: "Parent (Class 12 NEET)",
-    content: "We tried group coaching but the 1:1 attention at Vikar's made all the difference for Physics. The teachers clarify doubts instantly.",
+    role: "Parent",
+    content: "My son was highly distracted by mobile games and lacked focus in studies. The structured study plans and weekly monitoring system of VIKAR'S helped him build discipline. Now he follows a timetable and has reduced screen time naturally.",
     rating: 5,
     image: "https://picsum.photos/100/100?random=2"
   },
   {
     id: 3,
-    name: "Sarah John",
-    country: "India",
+    name: "Aarav M.",
+    country: "Mumbai, India",
     flag: "🇮🇳",
-    role: "Parent (IB Board)",
-    content: "Finally found tutors who understand the IB inquiry-based approach. The guidance for Internal Assessments was exceptional.",
+    role: "Student (Class 10)",
+    content: "I used to think Maths was impossible for me. But at VIKAR'S ACADEMY, the way they break down each problem step-by-step changed my mind. Now I actually enjoy solving sums and my marks have improved from 62 to 88.",
     rating: 5,
     image: "https://picsum.photos/100/100?random=3"
   },
   {
     id: 4,
-    name: "Vikram Singh",
-    country: "India",
+    name: "Mrs. Anandhi",
+    country: "Madurai, India",
     flag: "🇮🇳",
-    role: "Student (Class 9)",
-    content: "I used to hate Maths, but the gamified approach and the logic puzzles actually made it fun. I feel much more confident now.",
+    role: "Parent",
+    content: "My daughter’s overall percentage was 68% last year. Within one academic year at VIKAR'S ACADEMY, she scored 87% in final exams. The biggest change was in her confidence and time management during exams.",
     rating: 5,
     image: "https://picsum.photos/100/100?random=4"
   },
   {
     id: 5,
-    name: "Meera Reddy",
-    country: "India",
+    name: "Mr. Prakash R.",
+    country: "Hyderabad, India",
     flag: "🇮🇳",
-    role: "Parent (Class 6)",
-    content: "The AI workshop was a brilliant addition. My daughter is now using AI tools for her school projects creatively.",
+    role: "Parent",
+    content: "My child was anxious about board exams. The mock tests conducted exactly in board pattern reduced his fear. The detailed performance analysis after each test helped us understand where he was losing marks. At last his stress reduced and performance improved.",
     rating: 5,
     image: "https://picsum.photos/100/100?random=5"
+  },
+  {
+    id: 6,
+    name: "Sai Shruthi R.",
+    country: "Salem, India",
+    flag: "🇮🇳",
+    role: "Student (Class 10)",
+    content: "I was studying daily but not scoring well. This academy taught me how to revise smartly, with an active recall method & the way to analyze PYQ’s. My marks improved without studying extra hours. Thank you so much VIKAR’S.",
+    rating: 5,
+    image: "https://picsum.photos/100/100?random=6"
+  },
+  {
+    id: 7,
+    name: "Mr. Arvind Sharma",
+    country: "Delhi, India",
+    flag: "🇮🇳",
+    role: "Parent",
+    content: "In school, my daughter was one among all student. But here at VIKAR'S ACADEMY, she receives personal attention and doubt-clearing support. The teachers monitor my child personally and that made a big difference.",
+    rating: 5,
+    image: "https://picsum.photos/100/100?random=7"
+  },
+  {
+    id: 8,
+    name: "Pranitha S.",
+    country: "Coimbatore, India",
+    flag: "🇮🇳",
+    role: "Student (Class 10)",
+    content: "Before joining VIKAR’S, I scored 62/100 in Maths. After 4 months of consistent practice and concept clarity sessions, I scored 88/100 in Pre-Board exams. I loved the way they tuned me.",
+    rating: 5,
+    image: "https://picsum.photos/100/100?random=8"
+  },
+  {
+    id: 9,
+    name: "Aditya",
+    country: "Kochi, India",
+    flag: "🇮🇳",
+    role: "Student (Class 9)",
+    content: "Earlier I used to lose marks in basic algebra and fractions. After attending foundation rebuilding sessions at VIKAR’S, I improved from 58% to 81% in Maths. Now advanced chapters feel easy. Thank you.",
+    rating: 5,
+    image: "https://picsum.photos/100/100?random=9"
+  },
+  {
+    id: 10,
+    name: "Mrs. Preethi",
+    country: "Bangalore, India",
+    flag: "🇮🇳",
+    role: "Parent",
+    content: "I loved their start with an academic diagnosis session, where I found the learning gap of my child in science. Even in group sessions (1:3) my child was given personal care. They truly care each child.",
+    rating: 5,
+    image: "https://picsum.photos/100/100?random=10"
   }
 ];
 
@@ -155,17 +205,6 @@ export const PROGRAMS: ProgramItem[] = [
     ],
     highlight: "Avg 80% score improvement",
     color: "bg-red-100 border-red-200 text-red-800"
-  },
-  {
-    title: "NEET Foundation",
-    description: "Preparation Grades 9–12",
-    points: [
-      "Step-by-step Physics, Chem & Bio mastery",
-      "Foundation → Advanced program",
-      "Weekly mock tests & AIR-level questions"
-    ],
-    highlight: "80% qualify for top institutes",
-    color: "bg-purple-100 border-purple-200 text-purple-800"
   }
 ];
 
