@@ -1,48 +1,62 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Loader2 } from 'lucide-react';
 
-const videos = [
-    {
-        id: 1,
-        title: "How to Master Physics Quickly",
-        thumbnail: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop",
-        views: "12K views",
-        duration: "10:24"
-    },
-    {
-        id: 2,
-        title: "Calculus Made Easy",
-        thumbnail: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop",
-        views: "45K views",
-        duration: "15:30"
-    },
-    {
-        id: 3,
-        title: "Study Hacks for Board Exams",
-        thumbnail: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
-        views: "89K views",
-        duration: "08:15"
-    },
-    {
-        id: 4,
-        title: "Understanding Chemical Reactions",
-        thumbnail: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=800&auto=format&fit=crop",
-        views: "21K views",
-        duration: "12:45"
-    },
-    {
-        id: 5,
-        title: "The Future of AI in Education",
-        thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
-        views: "34K views",
-        duration: "18:20"
-    }
-];
+// REPLACE WITH YOUR ACTUAL CHANNEL ID
+const CHANNEL_ID = 'UCzSkrcNP11tRQXfmmRb8xDQ';
+
+interface Video {
+    id: string;
+    title: string;
+    thumbnail: string;
+    views: string; // Not available in RSS, will use date or hide
+    date: string;
+    link: string;
+}
 
 const YouTubeSection: React.FC = () => {
-    const [activeIndex, setActiveIndex] = useState(2); // Start with middle item
+    const [videos, setVideos] = useState<Video[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const res = await fetch(`/api/youtube?channelId=${CHANNEL_ID}`);
+                if (!res.ok) throw new Error('Failed to fetch');
+                const text = await res.text();
+
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const entries = xml.querySelectorAll('entry');
+
+                const fetchedVideos: Video[] = Array.from(entries).slice(0, 5).map(entry => {
+                    const mediaGroup = entry.querySelector('media\\:group, group');
+                    const thumbnail = mediaGroup?.querySelector('media\\:thumbnail, thumbnail')?.getAttribute('url') || '';
+                    return {
+                        id: entry.querySelector('videoId')?.textContent || '',
+                        title: entry.querySelector('title')?.textContent || '',
+                        thumbnail: thumbnail,
+                        views: 'Watch Now',
+                        date: new Date(entry.querySelector('published')?.textContent || '').toLocaleDateString(),
+                        link: entry.querySelector('link')?.getAttribute('href') || ''
+                    };
+                });
+
+                if (fetchedVideos.length > 0) {
+                    setVideos(fetchedVideos);
+                    setActiveIndex(Math.floor(fetchedVideos.length / 2));
+                }
+            } catch (error) {
+                console.error('YouTube fetch error:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchVideos();
+    }, []);
 
     const nextSlide = () => {
         setActiveIndex((prev) => (prev + 1) % videos.length);
@@ -51,6 +65,16 @@ const YouTubeSection: React.FC = () => {
     const prevSlide = () => {
         setActiveIndex((prev) => (prev - 1 + videos.length) % videos.length);
     };
+
+    if (loading) {
+        return (
+            <section className="py-24 bg-[#Fdfcf8] flex items-center justify-center min-h-[400px]">
+                <Loader2 className="animate-spin text-[#124029]" size={48} />
+            </section>
+        );
+    }
+
+    if (videos.length === 0) return null;
 
     // Calculate indices for visible items
     const getVisibleItems = () => {
@@ -100,7 +124,7 @@ const YouTubeSection: React.FC = () => {
                                 if (index === current) position = 0;
                                 else if (index === prev) position = -1;
                                 else if (index === next) position = 1;
-                                else return null; // Don't render others for this simple 3-item view
+                                else return null;
 
                                 return (
                                     <motion.div
@@ -118,6 +142,7 @@ const YouTubeSection: React.FC = () => {
                                         onClick={() => {
                                             if (position === -1) prevSlide();
                                             if (position === 1) nextSlide();
+                                            if (position === 0) window.open(video.link, '_blank');
                                         }}
                                     >
                                         <img
@@ -140,9 +165,9 @@ const YouTubeSection: React.FC = () => {
                                             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
                                                 <h3 className="text-xl font-bold mb-1 line-clamp-1">{video.title}</h3>
                                                 <div className="flex text-sm opacity-80 gap-3">
-                                                    <span>{video.views}</span>
+                                                    <span>{video.date}</span>
                                                     <span>•</span>
-                                                    <span>{video.duration}</span>
+                                                    <span>{video.views}</span>
                                                 </div>
                                             </div>
                                         )}
