@@ -3,6 +3,10 @@ import { ShieldCheck, Video, Cpu, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
 import lapBoyImg from '../src/Img/lap_boy_img.png';
 import teacherImg from '../src/Img/teacher_mg.jpeg';
+import indianTeacherImg from '../src/Img/indian_teacher.png';
+import indianStudentBoy1Img from '../src/Img/indian_student_boy_1.png';
+import indianStudentGirl1Img from '../src/Img/indian_student_girl_1.png';
+import indianStudentBoy2Img from '../src/Img/indian_student_boy_2.png';
 
 const Features: React.FC = () => {
    const container = {
@@ -165,7 +169,7 @@ const Features: React.FC = () => {
                         {/* Teacher View (Large) */}
                         <div className="relative rounded-xl overflow-hidden aspect-[16/9] group/video">
                            <img
-                              src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=300&auto=format&fit=crop"
+                              src={indianTeacherImg}
                               className="w-full h-full object-cover"
                               alt="Expert Mentor"
                            />
@@ -174,7 +178,7 @@ const Features: React.FC = () => {
                            {/* Teacher Label */}
                            <div className="absolute bottom-2 left-2 right-2 flex justify-between items-center">
                               <span className="text-white text-[10px] font-bold bg-black/30 backdrop-blur-md px-2 py-1 rounded-full">
-                                 Sarah • Expert Mentor
+                                 Priya • Expert Mentor
                               </span>
                               <div className="w-5 h-5 bg-[#124029] rounded-full flex items-center justify-center">
                                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -187,12 +191,12 @@ const Features: React.FC = () => {
                         {/* Students Grid (3 Students) */}
                         <div className="grid grid-cols-3 gap-2">
                            {[
-                              "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop",
-                              "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&auto=format&fit=crop",
-                              "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=150&auto=format&fit=crop"
-                           ].map((src, i) => (
+                              indianStudentBoy1Img,
+                              indianStudentGirl1Img,
+                              indianStudentBoy2Img
+                           ].map((img, i) => (
                               <div key={i} className="relative rounded-lg overflow-hidden aspect-square bg-gray-100 border border-gray-100">
-                                 <img src={src} className="w-full h-full object-cover grayscale-[10%]" alt="Student" />
+                                 <img src={img} className="w-full h-full object-cover grayscale-[10%]" alt="Student" />
                                  <div className="absolute top-1 right-1 w-2 h-2 bg-green-500 border border-white rounded-full"></div>
                               </div>
                            ))}
