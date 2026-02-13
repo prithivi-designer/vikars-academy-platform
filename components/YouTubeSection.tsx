@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Play, Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Loader2, AlertCircle } from 'lucide-react';
 
 // REPLACE WITH YOUR ACTUAL CHANNEL ID
 const CHANNEL_ID = 'UCzSkrcNP11tRQXfmmRb8xDQ';
@@ -19,17 +18,38 @@ const YouTubeSection: React.FC = () => {
     const [videos, setVideos] = useState<Video[]>([]);
     const [loading, setLoading] = useState(true);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const res = await fetch(`/api/youtube?channelId=${CHANNEL_ID}`);
-                if (!res.ok) throw new Error('Failed to fetch');
-                const text = await res.text();
+                setLoading(true);
+                let text = '';
+
+                // 1. Try Local API (Works in Vercel Production)
+                try {
+                    console.log('Fetching from /api/youtube...');
+                    const res = await fetch(`/api/youtube?channelId=${CHANNEL_ID}`);
+                    if (!res.ok) throw new Error(`API Error: ${res.status}`);
+                    text = await res.text();
+                } catch (apiErr) {
+                    console.warn('Local API failed (expected in local dev without Vercel CLI), trying CORS proxy...', apiErr);
+
+                    // 2. Try CORS Proxy (Works in Local Dev)
+                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`)}`;
+                    const resProxy = await fetch(proxyUrl);
+                    if (!resProxy.ok) throw new Error('CORS Proxy failed');
+                    text = await resProxy.text();
+                }
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(text, 'text/xml');
                 const entries = xml.querySelectorAll('entry');
+
+                if (entries.length === 0) {
+                    // Check if it's not actually XML or valid feed
+                    if (!text.includes('<feed')) throw new Error('Invalid XML response');
+                }
 
                 const fetchedVideos: Video[] = Array.from(entries).slice(0, 5).map(entry => {
                     const mediaGroup = entry.querySelector('media\\:group, group');
@@ -47,9 +67,43 @@ const YouTubeSection: React.FC = () => {
                 if (fetchedVideos.length > 0) {
                     setVideos(fetchedVideos);
                     setActiveIndex(Math.floor(fetchedVideos.length / 2));
+                    setError(null);
+                } else {
+                    setError("No videos found in the channel feed.");
                 }
-            } catch (error) {
+
+            } catch (error: any) {
                 console.error('YouTube fetch error:', error);
+                setError(error.message || 'Failed to load videos');
+
+                // Fallback for visual confirmation if everything fails
+                setVideos([
+                    {
+                        id: 'demo1',
+                        title: "How to Master Physics Quickly (Demo)",
+                        thumbnail: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=800&auto=format&fit=crop",
+                        views: "Demo Video",
+                        date: "Just now",
+                        link: "#"
+                    },
+                    {
+                        id: 'demo2',
+                        title: "Calculus Made Easy (Demo)",
+                        thumbnail: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop",
+                        views: "Demo Video",
+                        date: "Just now",
+                        link: "#"
+                    },
+                    {
+                        id: 'demo3',
+                        title: "Study Hacks for Board Exams (Demo)",
+                        thumbnail: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop",
+                        views: "Demo Video",
+                        date: "Just now",
+                        link: "#"
+                    }
+                ]);
+                setActiveIndex(1);
             } finally {
                 setLoading(false);
             }
@@ -59,10 +113,12 @@ const YouTubeSection: React.FC = () => {
     }, []);
 
     const nextSlide = () => {
+        if (videos.length === 0) return;
         setActiveIndex((prev) => (prev + 1) % videos.length);
     };
 
     const prevSlide = () => {
+        if (videos.length === 0) return;
         setActiveIndex((prev) => (prev - 1 + videos.length) % videos.length);
     };
 
@@ -74,10 +130,9 @@ const YouTubeSection: React.FC = () => {
         );
     }
 
-    if (videos.length === 0) return null;
-
     // Calculate indices for visible items
     const getVisibleItems = () => {
+        if (videos.length === 0) return { prev: -1, current: -1, next: -1 };
         const prev = (activeIndex - 1 + videos.length) % videos.length;
         const next = (activeIndex + 1) % videos.length;
         return { prev, current: activeIndex, next };
@@ -98,6 +153,12 @@ const YouTubeSection: React.FC = () => {
                     <p className="text-[#124029]/70 text-lg max-w-2xl mx-auto">
                         Watch our expert tutors break down complex topics into simple, bite-sized lessons.
                     </p>
+                    {error && (
+                        <div className="mt-4 bg-red-50 text-red-800 px-4 py-2 rounded-lg inline-flex items-center gap-2 text-sm font-bold border border-red-200">
+                            <AlertCircle size={16} />
+                            {error} (Showing Demo Data)
+                        </div>
+                    )}
                 </div>
 
                 <div className="relative h-[400px] flex items-center justify-center">
@@ -118,63 +179,69 @@ const YouTubeSection: React.FC = () => {
                     </button>
 
                     <div className="relative w-full max-w-5xl h-full flex items-center justify-center perspective-1000">
-                        <AnimatePresence mode='popLayout'>
-                            {videos.map((video, index) => {
-                                let position = 0; // 0 = center, -1 = left, 1 = right, others hidden or far
-                                if (index === current) position = 0;
-                                else if (index === prev) position = -1;
-                                else if (index === next) position = 1;
-                                else return null;
+                        {videos.length > 0 ? (
+                            <AnimatePresence mode='popLayout'>
+                                {videos.map((video, index) => {
+                                    let position = 0; // 0 = center, -1 = left, 1 = right, others hidden or far
 
-                                return (
-                                    <motion.div
-                                        key={video.id}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{
-                                            opacity: position === 0 ? 1 : 0.5,
-                                            scale: position === 0 ? 1 : 0.85,
-                                            x: position === 0 ? 0 : position === -1 ? '-60%' : '60%',
-                                            zIndex: position === 0 ? 20 : 10,
-                                            rotateY: position === 0 ? 0 : position === -1 ? 15 : -15
-                                        }}
-                                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                                        className="absolute w-[60%] md:w-[45%] aspect-video rounded-2xl shadow-2xl overflow-hidden bg-black cursor-pointer group"
-                                        onClick={() => {
-                                            if (position === -1) prevSlide();
-                                            if (position === 1) nextSlide();
-                                            if (position === 0) window.open(video.link, '_blank');
-                                        }}
-                                    >
-                                        <img
-                                            src={video.thumbnail}
-                                            alt={video.title}
-                                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                                        />
+                                    // Handle logic for fewer than 3 videos if needed, but assuming 3+ for carousel
+                                    if (index === current) position = 0;
+                                    else if (index === prev) position = -1;
+                                    else if (index === next) position = 1;
+                                    else return null;
 
-                                        {/* Play Button Overlay */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className={`w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center transition-transform duration-300 ${position === 0 ? 'scale-100 group-hover:scale-110' : 'scale-75'}`}>
-                                                <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center pl-1 shadow-lg">
-                                                    <Play fill="white" className="text-white w-6 h-6" />
+                                    return (
+                                        <motion.div
+                                            key={video.id}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{
+                                                opacity: position === 0 ? 1 : 0.5,
+                                                scale: position === 0 ? 1 : 0.85,
+                                                x: position === 0 ? 0 : position === -1 ? '-60%' : '60%',
+                                                zIndex: position === 0 ? 20 : 10,
+                                                rotateY: position === 0 ? 0 : position === -1 ? 15 : -15
+                                            }}
+                                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                                            className="absolute w-[60%] md:w-[45%] aspect-video rounded-2xl shadow-2xl overflow-hidden bg-black cursor-pointer group"
+                                            onClick={() => {
+                                                if (position === -1) prevSlide();
+                                                if (position === 1) nextSlide();
+                                                if (position === 0) window.open(video.link, '_blank');
+                                            }}
+                                        >
+                                            <img
+                                                src={video.thumbnail}
+                                                alt={video.title}
+                                                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                                            />
+
+                                            {/* Play Button Overlay */}
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <div className={`w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center transition-transform duration-300 ${position === 0 ? 'scale-100 group-hover:scale-110' : 'scale-75'}`}>
+                                                    <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center pl-1 shadow-lg">
+                                                        <Play fill="white" className="text-white w-6 h-6" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        {/* Info Overlay (Only visible on active) */}
-                                        {position === 0 && (
-                                            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                                                <h3 className="text-xl font-bold mb-1 line-clamp-1">{video.title}</h3>
-                                                <div className="flex text-sm opacity-80 gap-3">
-                                                    <span>{video.date}</span>
-                                                    <span>•</span>
-                                                    <span>{video.views}</span>
+                                            {/* Info Overlay (Only visible on active) */}
+                                            {position === 0 && (
+                                                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                                    <h3 className="text-xl font-bold mb-1 line-clamp-1">{video.title}</h3>
+                                                    <div className="flex text-sm opacity-80 gap-3">
+                                                        <span>{video.date}</span>
+                                                        <span>•</span>
+                                                        <span>{video.views}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                    </motion.div>
-                                );
-                            })}
-                        </AnimatePresence>
+                                            )}
+                                        </motion.div>
+                                    );
+                                })}
+                            </AnimatePresence>
+                        ) : (
+                            <div className="text-gray-400">No videos found.</div>
+                        )}
                     </div>
                 </div>
 
