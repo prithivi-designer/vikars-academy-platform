@@ -29,14 +29,14 @@ const YouTubeSection: React.FC = () => {
                 // 1. Try Local API (Works in Vercel Production)
                 try {
                     console.log('Fetching from /api/youtube...');
-                    const res = await fetch(`/api/youtube?channelId=${CHANNEL_ID}`);
+                    const res = await fetch(`/api/youtube?channel_id=${CHANNEL_ID}`);
                     if (!res.ok) throw new Error(`API Error: ${res.status}`);
                     text = await res.text();
                 } catch (apiErr) {
                     console.warn('Local API failed (expected in local dev without Vercel CLI), trying CORS proxy...', apiErr);
 
                     // 2. Try CORS Proxy (Works in Local Dev)
-                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`)}`;
+                    const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`)}`;
                     const resProxy = await fetch(proxyUrl);
                     if (!resProxy.ok) throw new Error('CORS Proxy failed');
                     text = await resProxy.text();

@@ -2,7 +2,7 @@
 export default async function handler(req, res) {
     // Configurable channel ID from request or fallback
     // The user should replace 'UCxxx' with their actual Channel ID.
-    const channelId = req.query.channelId || 'UCxxx';
+    const channelId = req.query.channel_id || req.query.channelId || 'UCxxx';
 
     // We recommend using the channel ID for stability.
     const url = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;

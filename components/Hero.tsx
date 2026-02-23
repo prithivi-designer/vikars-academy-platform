@@ -38,7 +38,11 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-4 mb-12"
             >
-              <Button variant="primary" className="!bg-[#124029] !border-[#124029] hover:!bg-[#1a5c3a] !px-10 !py-4 !text-lg !rounded-lg shadow-[#124029]/30 shadow-xl cursor-pointer">
+              <Button
+                onClick={() => document.getElementById('demo-section')?.scrollIntoView({ behavior: 'smooth' })}
+                variant="primary"
+                className="!bg-[#124029] !border-[#124029] hover:!bg-[#1a5c3a] !px-10 !py-4 !text-lg !rounded-lg shadow-[#124029]/30 shadow-xl cursor-pointer"
+              >
                 Start your journey
                 <ArrowRight size={20} className="ml-2" />
               </Button>

@@ -35,7 +35,11 @@ const Navbar: React.FC = () => {
                 {item}
               </a>
             ))}
-            <Button variant="primary" className="!bg-[#124029] hover:!bg-[#1a5c3a] !py-2 !px-6 text-sm">
+            <Button
+              onClick={() => document.getElementById('demo-section')?.scrollIntoView({ behavior: 'smooth' })}
+              variant="primary"
+              className="!bg-[#124029] hover:!bg-[#1a5c3a] !py-2 !px-6 text-sm"
+            >
               Book Free Demo
             </Button>
           </div>
@@ -61,7 +65,15 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4 border-t border-gray-200 mt-4 px-3 space-y-3">
-              <Button variant="primary" fullWidth className="!bg-[#124029] hover:!bg-[#1a5c3a]">
+              <Button
+                onClick={() => {
+                  document.getElementById('demo-section')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsOpen(false);
+                }}
+                variant="primary"
+                fullWidth
+                className="!bg-[#124029] hover:!bg-[#1a5c3a]"
+              >
                 Book Free Demo
               </Button>
             </div>
