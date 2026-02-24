@@ -25,10 +25,10 @@ const Features: React.FC = () => {
    };
 
    return (
-      <section id="offerings" className="py-24 bg-white relative">
+      <section id="offerings" className="py-6 bg-white relative">
          {/* Container */}
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
+            <div className="mb-6">
                <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -56,19 +56,19 @@ const Features: React.FC = () => {
                initial="hidden"
                whileInView="show"
                viewport={{ once: true, margin: "-100px" }}
-               className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6"
+               className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-4"
             >
 
                {/* 1. Personalised One-on-One (Shortened, Left) */}
-               <motion.div variants={item} className="md:col-span-1 bg-[#F3F8F5] rounded-[32px] p-8 flex flex-col relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
-                  <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Personalised Classes</h3>
-                  <p className="text-[#124029]/70 text-sm mb-8 leading-relaxed font-medium">
+               <motion.div variants={item} className="md:col-span-1 bg-[#E1F0DA] rounded-[32px] p-4 flex flex-col relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+                  <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">Personalised Classes</h3>
+                  <p className="text-[#124029]/70 text-sm mb-4 leading-relaxed font-medium">
                      One student. One expert. No group noise, no distractions—just dedicated attention.
                   </p>
 
                   {/* UI Mockup: Video Call Card */}
-                  <div className="flex-grow relative min-h-[200px]">
-                     <div className="absolute inset-x-0 top-0 bg-white rounded-2xl shadow-lg p-4 transform -rotate-3 transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105">
+                  <div className="flex-grow relative min-h-[100px]">
+                     <div className="absolute inset-x-0 top-0 bg-white rounded-2xl shadow-lg p-3 transform -rotate-3 scale-75 origin-top transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[0.55]">
                         <div className="relative rounded-xl overflow-hidden aspect-[4/3] mb-3 bg-gray-100">
                            <img
                               src={lapBoyImg}
@@ -105,9 +105,9 @@ const Features: React.FC = () => {
                </motion.div>
 
                {/* 2. Board-Specific Support (Wide, Top Right) */}
-               <motion.div variants={item} className="md:col-span-2 bg-[#E7F3EF] rounded-[32px] p-8 flex flex-col md:flex-row items-start md:items-center gap-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               <motion.div variants={item} className="md:col-span-2 bg-[#FFE2E2] rounded-[32px] p-4 flex flex-col md:flex-row items-start md:items-center gap-4 relative overflow-hidden group hover:shadow-xl transition-all duration-300 border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div className="flex-1 relative z-10">
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Board-Specific Syllabus</h3>
+                     <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">Board-Specific Syllabus</h3>
                      <p className="text-[#124029]/70 text-sm leading-relaxed max-w-sm font-medium">
                         From NCERT to IB, everything is covered exactly as examiners expect. No shortcuts.
                      </p>
@@ -142,17 +142,17 @@ const Features: React.FC = () => {
                </motion.div>
 
                {/* 3. Expert Teachers (Wide, Mid Left) */}
-               <motion.div variants={item} className="md:col-span-2 bg-[#F3F8F5] rounded-[32px] p-6 md:p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               <motion.div variants={item} className="md:col-span-2 bg-[#F5EFFF] rounded-[32px] p-4 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-4 border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div className="flex-1 w-full md:w-auto">
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">1:3 Expert Group
+                     <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">1:3 Expert Group
                      </h3>
-                     <p className="text-[#124029]/70 text-sm mb-6 font-medium">
+                     <p className="text-[#124029]/70 text-sm mb-4 font-medium">
                         Small group mentorship. Personalized attention, collaborative learning.
                      </p>
                   </div>
 
                   {/* UI Mockup: Active Classroom Interface */}
-                  <div className="w-full md:flex-1 bg-white rounded-2xl p-3 shadow-md border border-gray-100 transform transition-transform group-hover:-translate-y-2 relative overflow-hidden">
+                  <div className="w-full md:flex-[0.80] bg-white rounded-2xl p-3 shadow-md border border-gray-100 transform scale-100 origin-center transition-transform group-hover:-translate-y-2 relative overflow-hidden">
                      {/* Browser Header Bar */}
                      <div className="flex items-center gap-1.5 mb-3 px-1">
                         <div className="w-2 h-2 rounded-full bg-red-400"></div>
@@ -180,7 +180,7 @@ const Features: React.FC = () => {
                               <span className="text-white text-[10px] font-bold bg-black/30 backdrop-blur-md px-2 py-1 rounded-full">
                                  Priya • Expert Mentor
                               </span>
-                              <div className="w-5 h-5 bg-[#124029] rounded-full flex items-center justify-center">
+                              <div className="w-3 h-3 bg-[#124029] rounded-full flex items-center justify-center">
                                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                                  </svg>
@@ -206,10 +206,10 @@ const Features: React.FC = () => {
                </motion.div>
 
                {/* 4. Progress Tracker (Square, Mid Right) */}
-               <motion.div variants={item} className="md:col-span-1 bg-[#E7F3EF] rounded-[32px] p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               <motion.div variants={item} className="md:col-span-1 bg-[#C7D9DD] rounded-[32px] p-4 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div>
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Progress Tracker</h3>
-                     <p className="text-[#124029]/70 text-sm mb-6 font-medium">
+                     <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">Progress Tracker</h3>
+                     <p className="text-[#124029]/70 text-sm mb-4 font-medium">
                         AI-powered analytics on speed & accuracy.
                      </p>
                   </div>
@@ -234,10 +234,10 @@ const Features: React.FC = () => {
                </motion.div>
 
                {/* 5. GPS Learning Path (Wide, Bottom Left) */}
-               <motion.div variants={item} className="md:col-span-2 bg-[#F3F8F5] rounded-[32px] p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-8 border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               <motion.div variants={item} className="md:col-span-2 bg-[#FEECE2] rounded-[32px] p-4 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row items-center gap-4 border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div className="relative z-10 max-w-sm">
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">GPS Learning Path™</h3>
-                     <p className="text-[#124029]/70 text-sm mb-4 font-medium">
+                     <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">GPS Learning Path™</h3>
+                     <p className="text-[#124029]/70 text-sm mb-2 font-medium">
                         Maps exactly where your child stands, what's next, and how to get there.
                      </p>
                      <div className="inline-block bg-[#124029] text-white text-xs font-bold px-3 py-1.5 rounded-full">
@@ -276,10 +276,10 @@ const Features: React.FC = () => {
                </motion.div>
 
                {/* 6. Future Ready Skills (Square, Bottom Right) */}
-               <motion.div variants={item} className="md:col-span-1 bg-[#E7F3EF] rounded-[32px] p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
+               <motion.div variants={item} className="md:col-span-1 bg-[#FAF1E6] rounded-[32px] p-4 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-transparent hover:border-[#124029]/10 cursor-pointer">
                   <div>
-                     <h3 className="text-2xl font-bold text-[#124029] mb-2 font-space">Future-Ready</h3>
-                     <p className="text-[#124029]/70 text-sm mb-6 font-medium">
+                     <h3 className="text-2xl font-bold text-[#124029] mb-1 font-space">Future-Ready</h3>
+                     <p className="text-[#124029]/70 text-sm mb-4 font-medium">
                         Workshops on AI tools, ethics, and creativity.
                      </p>
                   </div>

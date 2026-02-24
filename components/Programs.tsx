@@ -255,10 +255,10 @@ const Programs: React.FC = () => {
         {/* Left Column - Sticky Navigation */}
         <div className="lg:w-[33.33%] flex-shrink-0 hidden lg:block">
           <div className="sticky top-0 pt-24 max-h-screen overflow-auto">
-            <div className="mb-12">
-              <span className="inline-block px-3 py-1 bg-[#F2F9F6] rounded-full text-xs font-bold uppercase tracking-widest text-[#124029] mb-6">
+            <div className="mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#124029] mb-6 tracking-tight font-space">
                 Our Programs
-              </span>
+              </h2>
               <p className="font-space text-2xl font-medium leading-tight text-[#124029] pr-8">
                 Tailored curriculums that ensure clarity, confidence, and top results for every student.
               </p>
@@ -275,8 +275,8 @@ const Programs: React.FC = () => {
                   }}
                   className={`group flex items-center justify-between py-4 border-b border-gray-100 transition-colors duration-300 ${activeId === program.id ? 'text-[#124029]' : 'text-gray-400 hover:text-gray-600'}`}
                 >
-                  <span className={`font-space text-lg transition-all duration-300 ${activeId === program.id ? 'font-bold pl-2' : 'font-medium'}`}>
-                    <span className={`mr-4 text-sm font-mono transition-opacity duration-300 ${activeId === program.id ? 'opacity-100 text-[#124029]' : 'opacity-50'}`}>{program.id}</span>
+                  <span className={`font-space text-2xl md:text-3xl transition-all duration-300 ${activeId === program.id ? 'font-bold pl-2' : 'font-medium'}`}>
+                    <span className={`mr-4 text-sm md:text-base font-mono transition-opacity duration-300 ${activeId === program.id ? 'opacity-100 text-[#124029]' : 'opacity-50'}`}>{program.id}</span>
                     {program.title}
                   </span>
                   <span className={`transform transition-all duration-300 ${activeId === program.id ? 'opacity-100 translate-x-0 text-[#124029]' : 'opacity-0 -translate-x-4'}`}>
@@ -292,9 +292,9 @@ const Programs: React.FC = () => {
         <div className="lg:flex-1">
           {/* Mobile Title */}
           <div className="lg:hidden mb-16">
-            <span className="inline-block px-3 py-1 bg-[#F2F9F6] rounded-full text-xs font-bold uppercase tracking-widest text-[#124029] mb-6">
+            <h2 className="text-4xl font-bold text-[#124029] mb-6 tracking-tight font-space">
               Our Programs
-            </span>
+            </h2>
             <h2 className="font-space text-4xl font-bold leading-tight text-[#124029]">
               Tailored curriculums that ensure clarity, confidence, and top results for every student.
             </h2>

@@ -64,13 +64,13 @@ const App: React.FC = () => {
           <Marquee />
         </ScrollSection>
 
-        <ScrollSection>
+        {/* <ScrollSection>
           <LearningPacks />
-        </ScrollSection>
+        </ScrollSection> */}
 
-        <ScrollSection>
+        {/* <ScrollSection>
           <BlogSection />
-        </ScrollSection>
+        </ScrollSection> */}
 
         <ScrollSection>
           <YouTubeSection />

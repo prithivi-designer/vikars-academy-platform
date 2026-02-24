@@ -8,21 +8,21 @@ import {
 import logo from "@/src/vikars_logo_icon.png";
 
 const iconConfigs = [
-    { Icon: BookOpen, color: "#61DAFB" },
-    { Icon: Calculator, color: "#FF9900" },
-    { Icon: GraduationCap, color: "#2496ED" },
-    { Icon: Microscope, color: "#339933" },
-    { Icon: Palette, color: "#000000" },
-    { Icon: Music, color: "#000000" },
-    { Icon: Globe, color: "#764ABC" },
-    { Icon: Atom, color: "#3178C6" },
-    { Icon: Brain, color: "#181717" },
-    { Icon: Laptop, color: "#1DA1F2" },
-    { Icon: Award, color: "#0077B5" },
-    { Icon: Scroll, color: "#E1306C" },
-    { Icon: Lightbulb, color: "#DB4437" },
-    { Icon: Pencil, color: "#000000" },
-    { Icon: Target, color: "#1877F2" },
+    { Icon: BookOpen, color: "#FF6B6B" },
+    { Icon: Calculator, color: "#4ECDC4" },
+    { Icon: GraduationCap, color: "#45B7D1" },
+    { Icon: Microscope, color: "#FF8A65" },
+    { Icon: Palette, color: "#FFD54F" },
+    { Icon: Music, color: "#BA68C8" },
+    { Icon: Globe, color: "#7986CB" },
+    { Icon: Atom, color: "#4FC3F7" },
+    { Icon: Brain, color: "#E57373" },
+    { Icon: Laptop, color: "#81C784" },
+    { Icon: Award, color: "#D4E157" },
+    { Icon: Scroll, color: "#FFB74D" },
+    { Icon: Lightbulb, color: "#FFF176" },
+    { Icon: Pencil, color: "#A1887F" },
+    { Icon: Target, color: "#90A4AE" },
 ];
 
 export default function StackFeatureSection() {
@@ -42,12 +42,23 @@ export default function StackFeatureSection() {
                         Join thousands of students achieving their academic dreams with Vikar's Academy personalized 1:1 tutoring.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
-                        <Button className="bg-[#124029] hover:bg-[#0d2e1e] text-white px-8 py-6 rounded-full text-lg w-full sm:w-auto h-auto">
-                            <a href="#" className="flex items-center gap-2">
-                                Book a Free Demo
-                            </a>
+                        <Button
+                            className="bg-[#124029] hover:bg-[#0d2e1e] text-white px-8 py-6 rounded-full text-lg w-full sm:w-auto h-auto"
+                            onClick={() => {
+                                const el = document.getElementById('demo-section');
+                                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
+                            Book a Free Demo
                         </Button>
-                        <Button variant="outline" className="border-[#124029]/20 text-[#124029] hover:bg-[#124029]/5 px-8 py-6 rounded-full text-lg w-full sm:w-auto h-auto">
+                        <Button
+                            variant="outline"
+                            className="border-[#124029]/20 text-[#124029] hover:bg-[#124029]/5 px-8 py-6 rounded-full text-lg w-full sm:w-auto h-auto"
+                            onClick={() => {
+                                const el = document.getElementById('programs');
+                                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                        >
                             View Courses
                         </Button>
                     </div>
@@ -57,7 +68,7 @@ export default function StackFeatureSection() {
                 <div className="relative w-full md:w-1/2 h-[18rem] md:h-[40rem] flex items-center justify-center md:justify-end overflow-visible mt-8 md:mt-0">
                     <div className="relative w-[20rem] h-[20rem] md:w-[50rem] md:h-[50rem] md:translate-x-[20%] flex items-center justify-center scale-[0.6] sm:scale-75 md:scale-100 origin-center">
                         {/* Center Circle */}
-                        <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center relative z-20 border border-gray-100">
+                        <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center relative z-20 border border-gray-100 font-bold overflow-hidden">
                             <img src={logo} alt="Vikar's Academy" className="w-16 h-16 object-contain" onError={(e) => {
                                 e.currentTarget.src = "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=200&auto=format&fit=crop";
                                 e.currentTarget.style.borderRadius = "50%";
@@ -89,14 +100,18 @@ export default function StackFeatureSection() {
                                             return (
                                                 <div
                                                     key={iconIdx}
-                                                    className="absolute bg-white rounded-full p-3 shadow-md border border-gray-100"
+                                                    className="absolute bg-white rounded-full p-4 shadow-lg border-2 transition-transform hover:scale-110"
                                                     style={{
                                                         left: `${x}%`,
                                                         top: `${y}%`,
                                                         transform: "translate(-50%, -50%)",
+                                                        borderColor: `${cfg.color}33`, // 20% opacity
+                                                        backgroundColor: `${cfg.color}08`, // 非常淡的背景色
                                                     }}
                                                 >
-                                                    <cfg.Icon className="w-6 h-6 text-[#124029]" />
+                                                    <div className="bg-white rounded-full p-0.5">
+                                                        <cfg.Icon className="w-7 h-7" style={{ color: cfg.color }} />
+                                                    </div>
                                                 </div>
                                             );
                                         })}

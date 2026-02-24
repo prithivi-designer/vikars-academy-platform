@@ -30,7 +30,7 @@ const Journey: React.FC = () => {
               At Vikar’s Academy, we don’t just teach lessons — we shape journeys.
               Every child learns differently. Some race ahead, some pause to explore, and some just need someone to believe in them.
             </p>
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+            <p className="text-gray-300 text-lg mb-10 leading-relaxed">
               Here, tutors aren’t just subject experts — they are mentors, motivators, and partners in growth. They celebrate every “aha!” moment and build the one thing exams can’t measure — confidence.
             </p>
 
