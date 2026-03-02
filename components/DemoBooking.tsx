@@ -64,73 +64,18 @@ const DemoBooking: React.FC = () => {
           </div>
 
           {/* Right Column: Form */}
-          <div className="w-full max-w-lg mx-auto lg:ml-auto">
-            <form className="space-y-5">
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 pl-1">Name</label>
-                <input
-                  type="text"
-                  className="w-full h-12 px-4 rounded-xl bg-white border-none focus:ring-4 focus:ring-emerald-500/30 outline-none text-gray-900 placeholder-gray-400 transition-shadow"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 pl-1">Email ID</label>
-                <input
-                  type="email"
-                  className="w-full h-12 px-4 rounded-xl bg-white border-none focus:ring-4 focus:ring-emerald-500/30 outline-none text-gray-900 placeholder-gray-400 transition-shadow"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2 pl-1">Board</label>
-                  <div className="relative">
-                    <select className="w-full h-12 px-4 rounded-xl bg-white border-none focus:ring-4 focus:ring-emerald-500/30 outline-none text-gray-900 appearance-none cursor-pointer">
-                      <option value="" disabled selected></option>
-                      <option value="cbse">CBSE</option>
-                      <option value="icse">ICSE</option>
-                      <option value="ib">IB</option>
-                      <option value="state">State</option>
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2 pl-1">Location</label>
-                  <input
-                    type="text"
-                    className="w-full h-12 px-4 rounded-xl bg-white border-none focus:ring-4 focus:ring-emerald-500/30 outline-none text-gray-900 transition-shadow"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-white text-sm font-medium mb-2 pl-1">Phone No</label>
-                <div className="flex relative">
-                  <span className="absolute left-0 top-0 bottom-0 w-16 flex items-center justify-center text-gray-500 font-medium border-r border-gray-100 z-10">
-                    +91
-                  </span>
-                  <input
-                    type="tel"
-                    className="w-full h-12 pl-20 pr-4 rounded-xl bg-white border-none focus:ring-4 focus:ring-emerald-500/30 outline-none text-gray-900 transition-shadow"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="w-full py-4 bg-[#F3EAD8] hover:bg-[#ebdcc0] text-[#0F3825] font-bold rounded-xl text-lg shadow-[0_4px_14px_0_rgba(243,234,216,0.3)] hover:shadow-[0_6px_20px_rgba(243,234,216,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all mt-6 uppercase tracking-wider"
-              >
-                Verify Number
-              </button>
-
-              <p className="text-center text-emerald-200/60 text-xs mt-4">
-                By clicking verify, you agree to our Terms & Privacy Policy
-              </p>
-            </form>
+          <div className="w-full max-w-lg mx-auto lg:ml-auto bg-#0F3825 p-2 rounded-2xl shadow-xl">
+            <iframe
+              src="https://tally.so/embed/GxrbYk?alignLeft=1&hideTitle=1&dynamicHeight=1&transparentBackground=1"
+              loading="lazy"
+              width="100%"
+              height="600"
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              title="Demo Booking Form"
+              className="w-full"
+            ></iframe>
           </div>
         </div>
       </div>
