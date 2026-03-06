@@ -22,9 +22,9 @@ const Footer: React.FC = () => {
               Empowering students with personalized education that builds confidence and character. We believe every child deserves a mentor who believes in them.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Facebook size={18} /></a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Instagram size={18} /></a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Linkedin size={18} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61576582391137" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Facebook size={18} /></a>
+              <a href="https://www.instagram.com/vikarsacademy/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Instagram size={18} /></a>
+              <a href="https://www.linkedin.com/company/vikar-s-academy/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-[#124029] hover:text-white transition-all"><Linkedin size={18} /></a>
             </div>
           </div>
 
@@ -52,8 +52,8 @@ const Footer: React.FC = () => {
             <h3 className="font-bold text-[#124029] text-sm uppercase mb-6 tracking-widest">Contact</h3>
             <ul className="space-y-4 text-sm font-medium text-gray-600">
               <li>Support: +91 9141120380</li>
-              <li>Email: hello@vikarsacademy.com</li>
-              <li><a href="#" className="inline-flex items-center text-[#124029] hover:underline">Chat on WhatsApp <ArrowRight size={14} className="ml-1" /></a></li>
+              <li>Email: vikarsacademy@gmail.com</li>
+              <li><a href="https://wa.me/919141120380" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#124029] hover:underline">Chat on WhatsApp <ArrowRight size={14} className="ml-1" /></a></li>
             </ul>
           </div>
 
