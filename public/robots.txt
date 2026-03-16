@@ -1,0 +1,66 @@
+# ==============================
+# robots.txt — vikarsacademy.in
+# ==============================
+
+# --- Google (Search + AI Overviews) ---
+User-agent: Googlebot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# --- Bing + Microsoft Copilot ---
+User-agent: Bingbot
+Allow: /
+
+# --- ChatGPT / OpenAI ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# --- Anthropic / Claude ---
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# --- Perplexity AI ---
+User-agent: PerplexityBot
+Allow: /
+
+# --- Meta AI ---
+User-agent: meta-externalagent
+Allow: /
+
+# --- Apple ---
+User-agent: Applebot
+Allow: /
+
+# --- Common SEO scrapers (block to save bandwidth) ---
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# --- All other bots: allow by default ---
+User-agent: *
+Allow: /
+
+# --- Sitemap ---
+Sitemap: https://vikarsacademy.in/sitemap.xml
